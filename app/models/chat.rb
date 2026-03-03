@@ -1,4 +1,4 @@
 class Chat < ApplicationRecord
-  belongs_to :program
   belongs_to :user
+  belongs_to :program
 end
