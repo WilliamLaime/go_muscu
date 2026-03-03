@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col">
+    <h1><%= @program.workout %></h1>
+    <%= @program.description %>
+  </div>
+  <div class="col-md-3">
+    <h2>Chats</h2>
+    <%= button_to "New chat", program_chats_path(@program), class: "btn btn-primary" %>
+    <div class="mb-4">
+      <% if @chats.any? %>
+        <ul>
+          <% @chats.each do |chat| %>
+            <li><%= link_to chat.title, chat_path(chat) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        There are no chats yet.
+      <% end %>
+    </div>
+  </div>
+</div>
