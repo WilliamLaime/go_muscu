@@ -1,5 +1,100 @@
-<ul>
-  <% @programs.each do |program| %>
-    <li><%= link_to program.workout, program_path(program), class: "btn btn-primary" %></li>
-  <% end %>
-</ul>
+<div class="hero">
+
+  <div class="container hero__content">
+
+    <div class="hero__text">
+      <p class="hero__subtitle">Découvrez votre assistant personnel</p>
+
+      <h1 class="hero__title">GoMuscu</h1>
+
+      <p class="hero__description">
+        Grâce à ses conseils personnalisés mettez-vous au sport sans attendre et à votre rythme.
+      </p>
+
+      <%= link_to "Commencer avec mon coach ai", programs_path, class:"btn hero__btn" %>
+    </div>
+
+    <div class="hero__image">
+      <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
+    </div>
+
+  </div>
+
+</div>
+
+<div class="programs container">
+
+  <h2 class="section-title">
+    Discover some users <span>experiences:</span>
+  </h2>
+
+  <div class="program-grid">
+
+    <% @programs.each do |program| %>
+
+      <div class="program-card">
+
+        <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1">
+
+        <div class="program-card-body">
+
+          <%= link_to "Try it", program_path(program), class:"btn btn-dark btn-sm" %>
+
+          <h4><%= program.workout %></h4>
+
+          <p>Short program for beginner.</p>
+
+        </div>
+
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
+
+<div class="reviews container">
+
+  <h3>Nos derniers avis utilisateurs</h3>
+
+  <div class="review-grid">
+
+    <% 3.times do %>
+
+      <div class="review-card">
+
+        <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg">
+
+        <h5>Вероника Ломоносова</h5>
+
+        <div class="stars">★★★★★</div>
+
+        <p>
+        Plein mauvais vestibulum molestie.
+        Nullam ac efficitur dui.
+        </p>
+
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+
+  <div class="container footer__content">
+
+    <h3>GoMuscu</h3>
+
+    <div class="footer__links">
+      <a>Privacy Policy</a>
+      <a>Terms of use</a>
+      <a>Legal</a>
+    </div>
+
+  </div>
+
+</footer>
