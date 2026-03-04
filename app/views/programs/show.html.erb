@@ -1,13 +1,17 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row" data-controller="toggle">
 
     <!-- LEFT SIDEBAR -->
-    <div class="col-md-2">
+    <div class="col-md-2 sidebar pt-3" data-toggle-target="hideable">
       <%= render "shared/sidenav", programs: @programs %>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div class="col-md-7">
+    <div class="col-md-7" data-toggle-target="mainContent">
+          <%= link_to "#", class: "d-none nav-link text-dark",
+                  data: { action: "click->toggle#call", toggle_target: "show" } do %>
+        <i class="fa-regular fa-square-caret-right"></i>
+      <% end %>
       <h1><%= @program.workout %></h1>
       <%= @program.description %>
     </div>
