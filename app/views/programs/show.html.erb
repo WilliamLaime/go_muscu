@@ -3,7 +3,7 @@
     <div class="row g-4" data-controller="toggle">
 
       <!-- SIDEBAR (hideable) -->
-      <aside class="col-12 col-md-3 col-lg-2" data-toggle-target="hideable">
+      <aside class="col-md-2 sidebar pt-3" data-toggle-target="hideable">
         <div class="panel panel--sticky">
           <div class="panel__header panel__header--row">
             <span class="panel__title">Programmes</span>
@@ -20,7 +20,7 @@
       </aside>
 
       <!-- MAIN (mainContent) -->
-      <section class="col-12 col-md-7 col-lg-7" data-toggle-target="mainContent">
+      <section class="col-md-7" data-toggle-target="mainContent">
         <!-- Bouton pour réouvrir la sidebar quand elle est cachée -->
         <%= link_to "#",
           class: "btn btn-sm btn-outline-secondary d-none mb-3",
@@ -34,17 +34,48 @@
             <h1 class="program-title"><%= @program.workout %></h1>
 
             <% if @program.description.present? %>
-              <p class="program-desc"><%= @program.description %></p>
+              <%
+                lines    = @program.description.strip.split("\n").map(&:strip).reject(&:empty?)
+                sections = []
+                current  = nil
+
+                lines.each do |line|
+                  # Header = ligne qui commence par un emoji Unicode
+                  if line.match?(/\A\p{Emoji}/)
+                    current = { header: line, items: [] }
+                    sections << current
+                  elsif current
+                    current[:items] << line
+                  else
+                    # Texte introductif avant le premier emoji (ex: "Programme Legs")
+                    sections << { header: nil, items: [line] }
+                    current = sections.last
+                  end
+                end
+              %>
+              <div class="program-sections">
+                <% sections.each do |section| %>
+                  <div class="program-section">
+                    <% if section[:header] %>
+                      <p class="program-section__header"><%= section[:header] %></p>
+                    <% end %>
+                    <% if section[:items].length == 1 %>
+                      <p class="program-section__text"><%= section[:items].first %></p>
+                    <% elsif section[:items].length > 1 %>
+                      <ul class="program-section__list">
+                        <% section[:items].each do |item| %>
+                          <li><%= item %></li>
+                        <% end %>
+                      </ul>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
             <% else %>
               <p class="program-desc">Choisis un chat à droite ou crée-en un pour démarrer.</p>
             <% end %>
-
-            <div class="program-actions mt-3">
-              <%= button_to "Nouveau chat", program_chats_path(@program), class: "btn btn-dark" %>
-            </div>
           </div>
         </div>
-
         <div class="panel mt-4">
           <div class="panel__body">
             <h2 class="h5 mb-2">Conseil rapide</h2>
@@ -54,9 +85,10 @@
           </div>
         </div>
       </section>
+      </section>
 
       <!-- RIGHT -->
-      <aside class="col-12 col-md-3 col-lg-3">
+      <aside class="col-md-3">
         <div class="panel">
           <div class="panel__header panel__header--row">
             <span class="panel__title">Chats</span>
