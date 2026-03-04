@@ -1,1 +1,101 @@
-// Specific CSS for your home-page
+.hero {
+  width: 100%;
+  background: #cbb7e8;
+  padding: 90px 0;
+}
+
+.hero__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero__title {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.hero__subtitle {
+  font-weight: 600;
+}
+
+.hero__description {
+  margin: 20px 0;
+  color: #333;
+}
+
+.hero__btn {
+  background: #2f2f39;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 6px;
+}
+
+.hero__image img {
+  width: 420px;
+  border-radius: 10px;
+}
+
+.programs {
+  padding: 60px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title span {
+  color: #b494f2;
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+}
+
+.program-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.program-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.program-card-body {
+  padding: 15px;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+}
+
+.review-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.avatar {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.footer {
+  background: #2d2d2d;
+  color: white;
+  padding: 30px 0;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+}// Specific CSS for your home-page
