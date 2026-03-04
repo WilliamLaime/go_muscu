@@ -13,7 +13,7 @@ class ChatsController < ApplicationController
   def create
     @program = Program.find(params[:program_id])
 
-    @chat = Chat.new(title: "Untitled")
+    @chat = Chat.new(title: "Programme")
     @chat.program = @program
     @chat.user = current_user
 
