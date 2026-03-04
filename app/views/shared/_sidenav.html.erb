@@ -1,0 +1,12 @@
+<ul class="position-sticky sticky-top nav flex-column">
+  <li class="nav-item">
+    <%= link_to "#", class: "nav-link text-dark" do %>
+      <i class="fa-regular fa-square-caret-left"></i>
+    <% end %>
+  </li>
+  <% programs.each do |program| %>
+    <li class="nav-item">
+      <%= link_to program.workout, program_path(program), class: "nav-link text-dark" %>
+    </li>
+  <% end %>
+</ul>

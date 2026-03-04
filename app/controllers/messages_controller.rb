@@ -83,7 +83,6 @@ Termine en respectant le format strict, sans texte additionnel hors sections.
       response = ruby_llm_chat.with_instructions(instructions).ask(@message.content)
       Message.create(role: "assistant", content: response.content, chat: @chat)
       @chat.generate_title_from_first_message
-      
       redirect_to chat_path(@chat)
     else
       render "chats/show", status: :unprocessable_entity
