@@ -28,6 +28,9 @@ gem "solid_queue"
 gem "solid_cable"
 gem "devise"
 gem "ruby_llm", "~> 1.2.0"
+gem "kramdown"
+gem "rouge"
+gem "kramdown-parser-gfm"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
