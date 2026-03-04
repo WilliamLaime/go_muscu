@@ -1,9 +1,4 @@
 <ul class="position-sticky sticky-top nav flex-column">
-  <li class="nav-item">
-    <%= link_to "#", class: "nav-link text-dark", data: { action: "click->toggle#call" } do %>
-      <i class="fa-regular fa-square-caret-left"></i>
-    <% end %>
-  </li>
   <div class="list-group list-group-flush program-nav">
     <% programs.each do |program| %>
       <%= link_to program.workout, program_path(program), class: "list-group-item list-group-item-action" %>
