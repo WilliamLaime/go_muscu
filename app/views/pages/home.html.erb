@@ -1,100 +1,116 @@
-<div class="hero">
+<!-- HERO + DISCOVER TITLE (combined, 2-column layout) -->
+<div class="page-hero">
+  <div class="container page-hero__inner">
 
-  <div class="container hero__content">
-
-    <div class="hero__text">
-      <p class="hero__subtitle">Découvrez votre assistant personnel</p>
-
-      <h1 class="hero__title">GoMuscu</h1>
-
-      <p class="hero__description">
-        Grâce à ses conseils personnalisés mettez-vous au sport sans attendre et à votre rythme.
-      </p>
-
-      <%= link_to "Commencer avec mon coach ai", programs_path, class:"btn hero__btn" %>
-    </div>
-
-    <div class="hero__image">
-      <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
-    </div>
-
-  </div>
-
-</div>
-
-<div class="programs container">
-
-  <h2 class="section-title">
-    Discover some users <span>experiences:</span>
-  </h2>
-
-  <div class="program-grid">
-
-    <% @programs.each do |program| %>
-
-      <div class="program-card">
-
-        <img src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1">
-
-        <div class="program-card-body">
-
-          <%= link_to "Try it", program_path(program), class:"btn btn-dark btn-sm" %>
-
-          <h4><%= program.workout %></h4>
-
-          <p>Short program for beginner.</p>
-
+    <!-- LEFT: hero text (on purple) + discover title (on white below) -->
+    <div class="page-hero__left">
+      <div class="page-hero__text">
+        <p class="hero__subtitle">Découvrez votre assistant personnel</p>
+        <%= image_tag "logo_noir_gomuscu_big.png", class: "hero__logo", alt: "GoMuscu" %>
+        <p class="hero__description">
+          Grâce à ses conseils personnalisés mettez-vous<br>au sport sans attendre et à votre rythme.
+        </p>
         </div>
 
+      <div class="page-hero__discover">
+        <h2>
+          Discover some users<br>
+          <span>experiences:</span>
+        </h2>
       </div>
+    </div>
 
-    <% end %>
-
-  </div>
-
-</div>
-
-<div class="reviews container">
-
-  <h3>Nos derniers avis utilisateurs</h3>
-
-  <div class="review-grid">
-
-    <% 3.times do %>
-
-      <div class="review-card">
-
-        <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg">
-
-        <h5>Вероника Ломоносова</h5>
-
-        <div class="stars">★★★★★</div>
-
-        <p>
-        Plein mauvais vestibulum molestie.
-        Nullam ac efficitur dui.
-        </p>
-
-      </div>
-
-    <% end %>
-
-  </div>
-
-</div>
-
-<footer class="footer">
-
-  <div class="container footer__content">
-
-    <h3>GoMuscu</h3>
-
-    <div class="footer__links">
-      <a>Privacy Policy</a>
-      <a>Terms of use</a>
-      <a>Legal</a>
+    <!-- RIGHT: large image spanning both zones -->
+    <div class="page-hero__image">
+      <%= image_tag "IA-coach-sport.jpg", alt: "AI Coach Sport" %>
     </div>
 
   </div>
+</div>
 
+<!-- PROGRAMS: grid only -->
+<div class="programs">
+  <div class="container">
+
+    <% program_images = ["leg.jpg", "full_body.jpg", "top.jpg", "push.jpg", "lower.jpg", "pull.jpg"] %>
+    <% program_descs  = [
+      "Short legs program for beginner.",
+      "Discover my program to feel your body",
+      "Gain big muscle on top",
+      "Hard programme for motivated people.",
+      "Something short and simple here",
+      "Something short and simple here"
+    ] %>
+
+    <div class="program-grid">
+      <% @programs.each_with_index do |program, i| %>
+        <div class="program-card">
+          <div class="program-card__img-wrap">
+            <%= image_tag program_images[i % program_images.length], alt: program.workout %>
+            <%= link_to "Try it", program_path(program), class: "btn program-card__try-btn" %>
+          </div>
+          <div class="program-card__body">
+            <h4><%= program.workout %></h4>
+            <p><%= program_descs[i % program_descs.length] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="reviews">
+  <div class="container">
+    <h3 class="reviews__title">Nos derniers avis utilisateurs</h3>
+    <div class="review-grid">
+      <% [1, 4, 5].each do |filled| %>
+        <div class="review-card">
+          <div class="review-card__header">
+            <img class="review-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+            <div>
+              <p class="review-name">Marvin Cohen</p>
+            </div>
+          </div>
+          <div class="stars">
+            <% 5.times do |s| %>
+              <span class="star <%= s < filled ? '' : 'star--empty' %>">★</span>
+            <% end %>
+          </div>
+          <p class="review-text">
+            Proin maximus vestibulum molestie. Nullam ac efficitur dui. Donec aliquam, nunc eget laoreet ultrices, dui leo pellentesque justo.
+          </p>
+          <span class="review-date">18 декабря</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__content">
+
+    <%= image_tag "logo_noir_gomuscu_big.png", class: "footer__logo", alt: "GoMuscu" %>
+
+    <div class="footer__social">
+      <span>Follow us:</span>
+      <div class="footer__icons">
+        <a href="#" class="footer__icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer__icon"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="footer__icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="footer__icon"><i class="fab fa-telegram-plane"></i></a>
+      </div>
+    </div>
+
+    <div class="footer__links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Sales and Refunds</a>
+      <a href="#">Legal</a>
+      <a href="#">Site Map</a>
+    </div>
+
+  </div>
 </footer>

@@ -1,101 +1,312 @@
-.hero {
-  width: 100%;
-  background: #cbb7e8;
-  padding: 90px 0;
+// ── PAGE HERO (hero text + discover title + image, 2-column) ─────────────────
+.page-hero {
+  position: relative;
+  background: #faf7ff; // white for the discover section below
+
+  // Purple background covers only the top portion (hero text zone)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 320px;
+    background: #cbb7e8;
+    z-index: 0;
+  }
 }
 
-.hero__content {
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+  padding-top: 80px;
+  padding-bottom: 30px;
 }
 
-.hero__title {
-  font-size: 56px;
-  font-weight: 700;
+.page-hero__left {
+  flex: 0 0 44%;
 }
 
+// Hero text sits in the purple zone
+.page-hero__text {
+  padding-bottom: 70px;
+}
+
+// Discover title sits in the white zone below
+.page-hero__discover {
+  padding-top: 80px;
+
+  h2 {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0;
+
+    span {
+      color: #b494f2;
+    }
+  }
+}
+
+// Right column: image spans the full height of both zones
+.page-hero__image {
+  flex: 1;
+
+  img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+// ── HERO TEXT ELEMENTS ────────────────────────────────────────────────────────
 .hero__subtitle {
   font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.hero__logo {
+  height: 60px;
+  display: block;
+  margin-bottom: 22px;
 }
 
 .hero__description {
-  margin: 20px 0;
+  margin: 0 0 24px;
   color: #333;
+  line-height: 1.6;
+  font-size: 15px;
 }
 
 .hero__btn {
   background: #2f2f39;
   color: white;
-  padding: 12px 22px;
+  padding: 12px 24px;
   border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+
+  &:hover {
+    background: #444;
+    color: white;
+  }
 }
 
-.hero__image img {
-  width: 420px;
-  border-radius: 10px;
-}
-
+// ── PROGRAMS (grid only) ──────────────────────────────────────────────────────
 .programs {
-  padding: 60px 0;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-title span {
-  color: #b494f2;
+  padding: 60px 0 80px;
+  background: #faf7ff;
 }
 
 .program-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
 }
 
 .program-card {
   background: white;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
 }
 
-.program-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
+.program-card__img-wrap {
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    display: block;
+  }
 }
 
-.program-card-body {
-  padding: 15px;
+.program-card__try-btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #2f2f39;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 22px;
+  border-radius: 6px 6px 0 0;
+  white-space: nowrap;
+  border: none;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    background: #f4f4f4;
+    color: #2f2f39;
+  }
+}
+
+.program-card__body {
+  padding: 14px 16px 18px;
+
+  h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #2f2f39;
+  }
+
+  p {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+  }
+}
+
+// ── REVIEWS ──────────────────────────────────────────────────────────────────
+.reviews {
+  padding: 60px 0 70px;
+  background: white;
+}
+
+.reviews__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  color: #2f2f39;
 }
 
 .review-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 .review-card {
   background: white;
+  border: 1px solid #ebe8f0;
+  border-radius: 14px;
   padding: 20px;
-  border-radius: 12px;
 }
 
-.avatar {
-  width: 40px;
+.review-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.review-avatar {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
+.review-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: #2f2f39;
+}
+
+.stars {
+  margin-bottom: 12px;
+
+  .star {
+    color: #f5a623;
+    font-size: 17px;
+
+    &--empty {
+      color: #ddd;
+    }
+  }
+}
+
+.review-text {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.review-date {
+  font-size: 12px;
+  color: #aaa;
+  display: block;
+}
+
+// ── FOOTER ───────────────────────────────────────────────────────────────────
 .footer {
   background: #2d2d2d;
   color: white;
-  padding: 30px 0;
+  padding: 28px 0;
 }
 
 .footer__content {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-}// Specific CSS for your home-page
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer__logo {
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+.footer__social {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  span {
+    font-size: 14px;
+    color: #ccc;
+    white-space: nowrap;
+  }
+}
+
+.footer__icons {
+  display: flex;
+  gap: 10px;
+}
+
+.footer__icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #555;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 13px;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+
+  &:hover {
+    color: white;
+    border-color: #aaa;
+  }
+}
+
+.footer__links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+
+  a {
+    color: #ccc;
+    font-size: 13px;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
