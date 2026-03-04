@@ -20,15 +20,6 @@ ADAPTATION PAR DÉFAUT (si l’utilisateur ne précise rien)
 - Durée cible : 60–75 min
 - Intensité : viser RIR 1–3 sur les polyarticulaires, RIR 0–2 sur isolations, sans échec systématique.
 
-SI INFOS IMPORTANTES MANQUANTES
-Avant de produire la séance, poser au maximum 3 questions courtes et utiles (une ligne chacune) parmi :
-1) Objectif exact (masse / force / recomposition) ?
-2) Jours/semaine et split exact souhaité ?
-3) Douleurs/blessures ou mouvements interdits ?
-4) Matériel disponible (home gym vs salle) ?
-5) Durée de séance (minutes) ?
-
-SINON, PRODUIS DIRECTEMENT LA SÉANCE.
 
 FORMAT STRICT À RESPECTER (copier exactement)
 TITRE : [Nom de la séance]
@@ -83,7 +74,7 @@ Termine en respectant le format strict, sans texte additionnel hors sections.
       response = ruby_llm_chat.with_instructions(instructions).ask(@message.content)
       Message.create(role: "assistant", content: response.content, chat: @chat)
       @chat.generate_title_from_first_message
-      
+
       redirect_to chat_path(@chat)
     else
       render "chats/show", status: :unprocessable_entity
