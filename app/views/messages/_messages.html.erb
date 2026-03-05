@@ -1,19 +1,19 @@
 <% messages.each do |message| %>
   <% if message.role == "user" %>
-    <div class="d-flex justify-content-end mb-2">
-      <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
+    <div class="d-flex justify-content-end mb-2 message-user">
+      <div class="bubble">
         <%= raw(render_markdown(message.content)) %>
       </div>
     </div>
   <% elsif message.role == "assistant" %>
-    <div class="d-flex justify-content-start mb-5">
-      <div class="px-3 pb-0 pt-3">
+    <div class="d-flex justify-content-start mb-3 message-assistant">
+      <div class="bubble">
         <%= raw(render_markdown(message.content)) %>
         <% if message == @chat.messages.last %>
           <%= button_to "Sauvegarder la seance", chat_resumes_path(@chat),
                 method: :post,
                 form: { data: { turbo: false } },
-                class: "btn btn-primary btn-sm" %>
+                class: "button-muscu-chat-secondaire mt-3" %>
         <% end %>
       </div>
     </div>
