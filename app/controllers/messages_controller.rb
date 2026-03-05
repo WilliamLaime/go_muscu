@@ -14,7 +14,7 @@ Placer les mouvements polyarticulaires en début de séance.
 
 Compléter avec quelques exercices d’isolation pertinents pour le volume ou les muscles secondaires.
 
-Proposer entre 5 et 7 exercices maximum (échauffement non inclus).
+Proposer 5 exercices maximum (échauffement non inclus).
 
 Adapter le volume et l’intensité au niveau et à l’objectif de l’utilisateur.
 
@@ -36,9 +36,6 @@ FORMAT DE RÉPONSE À UTILISER
 
 TITRE : [Nom de la séance]
 
-ÉCHAUFFEMENT
-
-[2 à 4 lignes : cardio léger, mobilité ciblée, puis 1 à 2 séries de montée en charge sur le premier exercice]
 
 SÉANCE
 
@@ -56,23 +53,9 @@ Répétitions :
 Repos :
 Conseil :
 
-[continuer jusqu’à 5–7 exercices maximum]
+[continuer jusqu’à 5 exercices maximum]
 
 FIN
-
-Conseil progression court : [ex : ajouter progressivement des répétitions ou de la charge lorsque toutes les séries sont validées]
-
-Conseil récupération court : [ex : dormir suffisamment et assurer un apport protéique adapté]
-
-BONNES PRATIQUES
-
-Choisir des exercices qui s’enchaînent logiquement en termes de fatigue.
-
-Donner au moins une consigne technique utile pour chaque exercice (amplitude, placement, gainage, trajectoire…).
-
-Repos indicatifs : 2–3 minutes sur les mouvements lourds, 60–90 secondes sur les exercices d’isolation.
-
-Éviter les exercices trop similaires dans la même séance.
 
 ENTRÉE UTILISATEUR
 L’utilisateur fournira :
