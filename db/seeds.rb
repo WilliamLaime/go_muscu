@@ -1,102 +1,55 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-puts "Cleaning database..."
-Program.destroy_all
+puts "Seeding programs..."
 
-# 2. Create the instances 🏗️
-puts "Creating programs..."
-Program.create!(workout: "Legs", description: "Programme Legs
-🎯 Objectif
-Développer la puissance et la masse musculaire du bas du corps.
-💥 Muscles ciblés
+images_path = Rails.root.join("app/assets/images")
 
-Quadriceps
-Ischio-jambiers
-Fessiers
-Mollets
-🏋️‍♂️ Exemple d’exercices
+program_data = [
+  {
+    workout: "Legs",
+    image: "leg.jpg",
+    description: "Programme Legs\n🎯 Objectif\nDevelopper la puissance et la masse musculaire du bas du corps.\n💥 Muscles cibles\n\nQuadriceps\nIschio-jambiers\nFessiers\nMollets\n🏋️ Exemple d'exercices\n\nSquat\nPresse a cuisses\nSouleve de terre jambes tendues\nFentes\n📆 Ideal pour\nCompleter un programme Push / Pull pour un developpement equilibre."
+  },
+  {
+    workout: "Push",
+    image: "push.jpg",
+    description: "🔴 Programme Push\n🎯 Objectif\nTravailler tous les muscles impliques dans les mouvements de poussee.\n💥 Muscles cibles\n\nPectoraux\nEpaules (deltoides)\nTriceps\n🏋️ Exemple d'exercices\n\nDeveloppe couche\nDeveloppe militaire\nDips\nElevations laterales\n📆 Ideal pour\nProgramme en split type Push / Pull / Legs (3 a 6 seances par semaine)."
+  },
+  {
+    workout: "Pull",
+    image: "pull.jpg",
+    description: "🔵 Programme Pull\n🎯 Objectif\nTravailler tous les muscles impliques dans les mouvements de tirage.\n💥 Muscles cibles\n\nDos\nBiceps\nArriere d'epaules\n🏋️ Exemple d'exercices\n\nTractions\nTirage horizontal\nRowing barre\nCurl biceps\n📆 Ideal pour\nComplement du programme Push dans un split structure."
+  },
+  {
+    workout: "Upper",
+    image: "top.jpg",
+    description: "🟣 Programme Upper\n🎯 Objectif\nSeparer le haut et le bas du corps sur differentes seances.\n💥 Upper (Haut du corps)\n\nPectoraux\nDos\nEpaules\nBras\n\n📆 Ideal pour\n2 seances par semaine.\nExcellent equilibre entre volume et recuperation."
+  },
+  {
+    workout: "Lower",
+    image: "lower.jpg",
+    description: "🟠 Programme Lower\n🎯 Objectif\nSeparer le haut et le bas du corps sur differentes seances.\n💥 Lower (Bas du corps)\n\nQuadriceps\nIschio-jambiers\nFessiers\nMollets\n📆 Ideal pour\n2 seances par semaine.\nExcellent equilibre entre volume et recuperation."
+  },
+  {
+    workout: "Full body",
+    image: "full_body.jpg",
+    description: "🟡 Programme Full Body\n🎯 Objectif\nTravailler l'ensemble du corps a chaque seance.\n💥 Muscles cibles\nTous les groupes musculaires majeurs.\n🏋️ Avantages\n\n📆 Ideal pour les debutants\nParfait pour 2 a 3 seances par semaine\nFavorise la progression rapide"
+  }
+]
 
-Squat
-Presse à cuisses
-Soulevé de terre jambes tendues
-Fentes
-📆 Idéal pour
-Compléter un programme Push / Pull pour un développement équilibré.")
-Program.create!(workout: "Push", description: "🔴 Programme Push
-🎯 Objectif
-Travailler tous les muscles impliqués dans les mouvements de poussée.
-💥 Muscles ciblés
+program_data.each do |data|
+  program = Program.find_or_create_by!(workout: data[:workout])
+  program.update!(description: data[:description])
 
-Pectoraux
-Épaules (deltoïdes)
-Triceps
-🏋️‍♂️ Exemple d’exercices
+  unless program.image.attached?
+    path = images_path.join(data[:image])
+    program.image.attach(
+      io: File.open(path),
+      filename: data[:image],
+      content_type: "image/jpeg"
+    )
+    puts "  Image attachee: #{data[:workout]} -> #{data[:image]}"
+  else
+    puts "  Image deja presente: #{data[:workout]}"
+  end
+end
 
-Développé couché
-Développé militaire
-Dips
-Élévations latérales
-📆 Idéal pour
-Programme en split type Push / Pull / Legs (3 à 6 séances par semaine).")
-Program.create!(workout: "Pull", description: "🔵 Programme Pull
-🎯 Objectif
-Travailler tous les muscles impliqués dans les mouvements de tirage.
-💥 Muscles ciblés
-
-Dos
-Biceps
-Arrière d’épaules
-🏋️‍♂️ Exemple d’exercices
-
-Tractions
-Tirage horizontal
-Rowing barre
-Curl biceps
-📆 Idéal pour
-Complément du programme Push dans un split structuré.")
-Program.create!(workout: "Upper", description: "🟣 Programme Upper
-🎯 Objectif
-Séparer le haut et le bas du corps sur différentes séances.
-💥 Upper (Haut du corps)
-
-Pectoraux
-Dos
-Épaules
-Bras
-
-
-📆 Idéal pour
-2 séances par semaine .
- Excellent équilibre entre volume et récupération.")
-Program.create!(workout: "Lower", description: "🟠 Programme Lower
-🎯 Objectif
-Séparer le haut et le bas du corps sur différentes séances.
-💥 Lower (Bas du corps)
-
-Quadriceps
-Ischio-jambiers
-Fessiers
-Mollets
-📆 Idéal pour
-2 séances par semaine.
- Excellent équilibre entre volume et récupération.")
-Program.create!(workout: "Full body", description: "🟡 Programme Full Body
-🎯 Objectif
-Travailler l’ensemble du corps à chaque séance.
-💥 Muscles ciblés
-Tous les groupes musculaires majeurs.
-🏋️‍♂️ Avantages
-
-📆 Idéal pour les débutants
-Parfait pour 2 à 3 séances par semaine
-Favorise la progression rapide")
-
-# 3. Display a message 🎉
-puts "Finished! Created #{Program.count} programs."
+puts "Done! #{Program.count} programs."
