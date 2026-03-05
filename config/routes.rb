@@ -18,5 +18,8 @@ Rails.application.routes.draw do
 
   resources :chats, only: :show do
     resources :messages, only: [:create]
+    resources :resumes, only: [:create]
   end
+
+  resources :resumes, only: [:index, :destroy]
 end
