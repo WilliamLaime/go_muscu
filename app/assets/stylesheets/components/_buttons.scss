@@ -1,0 +1,22 @@
+.btn-muscu-chat {
+  background: #a173D9;
+  color: white;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 8px 16px;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 4px rgba(107, 106, 106, 0.10);
+}
+
+.btn-muscu-chat:hover {
+  background: #7349a5;
+  box-shadow: 0 4px 4px rgba(107, 106, 106, 0.10);
+  color: white;
+}
+
+.btn-muscu-chat:active {
+  transform: translateY(1px);
+}

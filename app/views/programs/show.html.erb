@@ -92,7 +92,9 @@
         <div class="panel">
           <div class="panel__header panel__header--row">
             <span class="panel__title">Chats</span>
-            <%= button_to "New chat", program_chats_path(@program), class: "btn btn-primary btn-sm" %>
+            <%= button_to program_chats_path(@program), class: "btn-muscu-chat" do %>
+              Coach IA
+            <% end %>
           </div>
 
           <div class="panel__body">
