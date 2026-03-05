@@ -13,7 +13,7 @@ class ResumesController < ApplicationController
       chat: @chat
     )
     if @resume.save
-      redirect_to "#{chat_path(@chat)}#messages", notice: "Séance sauvegardée !"
+      redirect_to "#{chat_path(@chat)}#messages", notice: "Séance sauvegardée dans le dashboard !"
     else
       redirect_to "#{chat_path(@chat)}#messages", alert: "Erreur lors de la sauvegarde."
     end
