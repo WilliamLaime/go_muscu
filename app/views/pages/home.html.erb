@@ -32,28 +32,30 @@
 <div class="programs">
   <div class="container">
 
-    <% program_images = ["leg.jpg", "full_body.jpg", "top.jpg", "push.jpg", "lower.jpg", "pull.jpg"] %>
+    <% program_images = ["leg.jpg", "full_body.jpg", "photo_test.jpg", "push.jpg", "lower.jpg", "pull.jpg"] %>
     <% program_descs  = [
-      "Short legs program for beginner.",
-      "Discover my program to feel your body",
-      "Gain big muscle on top",
-      "Hard programme for motivated people.",
-      "Something short and simple here",
-      "Something short and simple here"
+      "Séance dédiée au bas du corps : quadriceps, ischios, fessiers et mollets.",
+      "Entraînement des muscles de poussée : pectoraux, épaules et triceps.",
+      "Travail des muscles de tirage : dos, biceps et arrière des épaules.",
+      "Entraînement complet du haut du corps : poitrine, dos, épaules et bras.",
+      "Séance ciblée sur le bas du corps : jambes et fessiers.",
+      "Entraînement complet sollicitant l’ensemble des groupes musculaires."
     ] %>
 
     <div class="program-grid">
       <% @programs.each_with_index do |program, i| %>
-        <div class="program-card">
+        <%= link_to program_path(program), class: "program-card" do %>
+
           <div class="program-card__img-wrap">
             <%= image_tag program_images[i % program_images.length], alt: program.workout %>
-            <%= link_to "Try it", program_path(program), class: "btn program-card__try-btn" %>
           </div>
+
           <div class="program-card__body">
             <h4><%= program.workout %></h4>
             <p><%= program_descs[i % program_descs.length] %></p>
           </div>
-        </div>
+
+        <% end %>
       <% end %>
     </div>
 
@@ -64,53 +66,56 @@
 <div class="reviews">
   <div class="container">
     <h3 class="reviews__title">Nos derniers avis utilisateurs</h3>
+
     <div class="review-grid">
-      <% [1, 4, 5].each do |filled| %>
+      <%
+        reviews = [
+          {
+            name: "Camille Lefèvre",
+            avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+            filled: 5,
+            text: "Programme super clair et facile à suivre. En 3 semaines, j’ai déjà gagné en force et en régularité.",
+            date: "18 décembre"
+          },
+          {
+            name: "Nicolas Martin",
+            avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+            filled: 4,
+            text: "Très bonne app : les séances sont bien structurées et rapides à lancer. J’aimerais juste plus d’exercices guidés en vidéo.",
+            date: "4 janvier"
+          },
+          {
+            name: "Sofia Benali",
+            avatar: "https://randomuser.me/api/portraits/women/12.jpg",
+            filled: 5,
+            text: "J’adore le suivi et la progression. L’interface est clean et ça motive vraiment à ne pas lâcher.",
+            date: "22 février"
+          }
+        ]
+      %>
+
+      <% reviews.each do |review| %>
         <div class="review-card">
           <div class="review-card__header">
-            <img class="review-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+            <img class="review-avatar" src="<%= review[:avatar] %>" alt="Utilisateur">
             <div>
-              <p class="review-name">Marvin Cohen</p>
+              <p class="review-name"><%= review[:name] %></p>
             </div>
           </div>
+
           <div class="stars">
             <% 5.times do |s| %>
-              <span class="star <%= s < filled ? '' : 'star--empty' %>">★</span>
+              <span class="star <%= s < review[:filled] ? '' : 'star--empty' %>">★</span>
             <% end %>
           </div>
+
           <p class="review-text">
-            Proin maximus vestibulum molestie. Nullam ac efficitur dui. Donec aliquam, nunc eget laoreet ultrices, dui leo pellentesque justo.
+            <%= review[:text] %>
           </p>
-          <span class="review-date">18 декабря</span>
+
+          <span class="review-date"><%= review[:date] %></span>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container footer__content">
-
-    <%= image_tag "logo_noir_gomuscu_big.png", class: "footer__logo", alt: "GoMuscu" %>
-
-    <div class="footer__social">
-      <span>Follow us:</span>
-      <div class="footer__icons">
-        <a href="#" class="footer__icon"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="footer__icon"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="footer__icon"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="footer__icon"><i class="fab fa-telegram-plane"></i></a>
-      </div>
-    </div>
-
-    <div class="footer__links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Sales and Refunds</a>
-      <a href="#">Legal</a>
-      <a href="#">Site Map</a>
-    </div>
-
-  </div>
-</footer>
