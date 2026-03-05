@@ -23,7 +23,7 @@
   align-items: flex-start;
   gap: 50px;
   padding-top: 80px;
-  padding-bottom: 30px;
+  padding-bottom: 0;
 }
 
 .page-hero__left {
@@ -37,16 +37,17 @@
 
 // Discover title sits in the white zone below
 .page-hero__discover {
-  padding-top: 80px;
+  padding-top: 40px;
 
   h2 {
-    font-size: 52px;
+    font-size: 40px;
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1;
     margin: 0;
 
     span {
       color: #b494f2;
+      font-size: 65px;
     }
   }
 }
@@ -67,7 +68,8 @@
 .hero__subtitle {
   font-weight: 600;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 19px;
+  color: #444444;
 }
 
 .hero__logo {
@@ -81,6 +83,8 @@
   color: #333;
   line-height: 1.6;
   font-size: 15px;
+  color: #444444;
+  line-height: 1;
 }
 
 .hero__btn {
@@ -143,7 +147,7 @@
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
 
   &:hover {
-    background: #f4f4f4;
+    background: #EBCCDE;
     color: #2f2f39;
   }
 }
