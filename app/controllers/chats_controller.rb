@@ -1,13 +1,7 @@
 class ChatsController < ApplicationController
-  def index
-  end
-
   def show
     @chat = current_user.chats.find(params[:id])
     @message = Message.new
-  end
-
-  def new
   end
 
   def create
@@ -25,4 +19,10 @@ class ChatsController < ApplicationController
     end
   end
 
+  def destroy
+    @program = Program.find(params[:program_id])
+    @chat = @program.chats.find(params[:id])
+    @chat.destroy
+    redirect_to program_path(@program), status: :see_other
+  end
 end
