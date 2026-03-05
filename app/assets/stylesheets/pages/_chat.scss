@@ -50,6 +50,21 @@
   padding: 12px 16px;
   max-width: 85%;
   box-shadow: 0 2px 8px rgba(0,0,0,.06);
+
+   p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  ul, ol {
+    padding-left: 20px;
+    margin-bottom: 10px;
+
+    li {
+      margin-bottom: 4px;
+      line-height: 1.6;
+    }
+  }
 }
 
 .bubble p {
