@@ -100,9 +100,15 @@
             <% if @chats.any? %>
               <div class="list-group list-group-flush chats-list">
                 <% @chats.each do |chat| %>
-                  <%= link_to chat.title, chat_path(chat), class: "list-group-item list-group-item-action" %>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <%= link_to chat.title, chat_path(chat), class: "list-group-item list-group-item-action" %>
+                    <%= link_to program_chat_path(@program, chat),
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                        class: "btn btn-sm text-danger ps-3" do %>
+                      <i class="fa-solid fa-trash fa-xl text-secondary pl-2"></i>
+                    <% end %>
+                  </div>
                 <% end %>
-              </div>
             <% else %>
               <p class="text-muted mb-0">There are no chats yet.</p>
             <% end %>
