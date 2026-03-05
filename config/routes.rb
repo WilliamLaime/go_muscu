@@ -21,5 +21,5 @@ Rails.application.routes.draw do
     resources :resumes, only: [:create]
   end
 
-  resources :resumes, only: [:index, :destroy]
+  resources :resumes, only: [:index, :destroy], path: "dashboard"
 end
