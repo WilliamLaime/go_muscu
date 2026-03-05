@@ -1,79 +1,82 @@
 .program-page {
-  padding: 32px 0 60px;
+  padding: 32px 100px 60px;
   background: #faf7ff; // léger violet très clair
 }
 
-.panel {
+.panel { // toute la div
+
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(0,0,0,.06);
   overflow: hidden;
-}
 
-.panel--sticky {
-  position: sticky;
-  top: 16px;
-}
 
-.panel__header {
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(0,0,0,.06);
-  background: #ffffff;
-}
+  .panel--sticky {
+    position: sticky;
+    top: 16px;
+  }
 
-.panel__header--row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
+  .panel__header {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+    background: #ffffff;
+  }
 
-.panel__title {
-  font-weight: 700;
-  color: #2f2f39;
-}
+  .panel__header--row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
 
-.panel__body {
-  padding: 16px;
-}
+  .panel__title {
+    font-weight: 700;
+    color: #2f2f39;
+  }
 
-.program-kicker {
-  margin: 0 0 6px;
-  font-weight: 700;
-  color: rgba(0,0,0,.55);
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: .04em;
-}
+  .panel__body {
+    padding: 16px;
+  }
 
-.program-title {
-  margin: 0 0 10px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
+  .program-kicker {
+    margin: 0 0 6px;
+    font-weight: 700;
+    color: rgba(0,0,0,.55);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .04em;
+  }
 
-.program-desc {
-  margin: 0;
-  color: rgba(0,0,0,.65);
-  line-height: 1.6;
-}
+  .program-title {
+    margin: 0 0 10px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
 
-.program-actions .btn-dark {
-  background: #2f2f39;
-  border-color: #2f2f39;
-}
+  .program-desc {
+    margin: 0;
+    color: rgba(0,0,0,.65);
+    line-height: 1.6;
+  }
 
-.program-nav .list-group-item {
-  border: 0;
-  padding: 10px 14px;
-  color: #2f2f39;
-}
+  .program-actions .btn-dark {
+    background: #2f2f39;
+    border-color: #2f2f39;
+  }
 
-.program-nav .list-group-item:hover {
-  background: rgba(203, 183, 232, .25);
-}
+  .program-nav .list-group-item {
+    border: 0;
+    padding: 10px 14px;
+    color: #2f2f39;
+  }
 
-.chats-list .list-group-item {
-  border: 0;
-  padding: 10px 12px;
+  .program-nav .list-group-item:hover {
+    background: rgba(203, 183, 232, .25);
+  }
+
+  .chats-list .list-group-item {
+    border: 0;
+    padding: 10px 12px;
+  }
+
 }
