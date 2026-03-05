@@ -9,6 +9,12 @@
     <div class="d-flex justify-content-start mb-5">
       <div class="px-3 pb-0 pt-3">
         <%= raw(render_markdown(message.content)) %>
+        <% if message == @chat.messages.last %>
+          <%= button_to "Sauvegarder la seance", chat_resumes_path(@chat),
+                method: :post,
+                form: { data: { turbo: false } },
+                class: "btn btn-primary btn-sm" %>
+        <% end %>
       </div>
     </div>
   <% end %>

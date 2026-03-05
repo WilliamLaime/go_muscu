@@ -24,5 +24,4 @@ class ChatsController < ApplicationController
       render "programs/show"
     end
   end
-
 end
