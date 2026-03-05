@@ -1,11 +1,38 @@
-<%= link_to "← #{@chat.program.workout}", program_path(@chat.program) %>
+<div class="chat-page">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
 
-<h1 id="chat_title"><%= @chat.title %></h1>
+        <!-- Header -->
+        <div class="chat-header mb-4">
+          <%= link_to program_path(@chat.program), class: "chat-back-link" do %>
+            <i class="fa-solid fa-arrow-left"></i> <%= @chat.program.workout %>
+          <% end %>
+          <h1 class="chat-title"><%= @chat.title %></h1>
+        </div>
 
-<div id="messages">
-  <%= render "messages/messages", messages: @chat.messages %>
-</div>
+        <!-- Messages -->
+        <div class="panel mb-4">
+          <div class="panel__body">
+            <div id="messages">
+              <%= render "messages/messages", messages: @chat.messages %>
+            </div>
+          </div>
+        </div>
 
-<div id="new_message_container">
-  <%= render "messages/form", chat: @chat, message: @message %>
+        <!-- Formulaire -->
+        <div class="panel">
+          <div class="panel__body">
+            <div id="new_message_container">
+              <%= render "messages/form", chat: @chat, message: @message %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <button class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
 </div>
