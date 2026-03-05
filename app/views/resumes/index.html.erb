@@ -1,25 +1,76 @@
-<div class="container mt-4">
-  <h1>Mon Dashboard</h1>
+<div class="resume-page">
+  <div class="container">
+    <div class="resume-header">
+      <p class="resume-kicker">Dashboard</p>
+      <h1 class="resume-title">Mes entraînements</h1>
+    </div>
 
-  <% if @resumes.empty? %>
-    <p>Aucun chat sauvegardé pour l'instant.</p>
-  <% else %>
-    <% @resumes.each do |resume| %>
-      <div class="card mb-4" style="background-color: white; border-radius: 8px;">
-        <div class="card-body">
-          <h5 class="card-title"><%= resume.title %></h5>
-          <div class="card-text">
-            <%= simple_format(resume.description) %>
+    <% if @resumes.empty? %>
+      <div class="resume-empty">
+        <h5 class="mb-2">Aucun entraînement enregistré</h5>
+        <p class="mb-0 text-muted">Quand tu sauvegardes une séance, elle apparaîtra ici.</p>
+      </div>
+    <% else %>
+      <div class="row g-3">
+        <% @resumes.each do |resume| %>
+          <% uid = "resume-#{resume.id}" %>
+
+          <% desc = resume.description.to_s.strip %>
+          <% preview = truncate(desc, length: 220, separator: " ", omission: "") %>
+          <% rest = desc.delete_prefix(preview) %>
+
+          <div class="col-12 col-md-6">
+            <div class="resume-card" data-resume-card>
+              <div class="resume-card__surface">
+                <div class="resume-card__top">
+                  <h5 class="resume-card__title mb-1">
+                    <%= resume.title.presence || "Séance ##{resume.id}" %>
+                  </h5>
+
+                  <div class="resume-card__preview">
+                    <%= simple_format(preview) %>
+                    <% if rest.present? %>
+                      <span class="resume-card__fade"></span>
+                    <% end %>
+                  </div>
+                </div>
+
+                <% if rest.present? %>
+                  <div id="<%= "#{uid}-collapse" %>" class="collapse">
+                    <div class="resume-card__body">
+                      <div class="resume-card__full">
+                        <%= simple_format(rest) %>
+                      </div>
+
+                      <div class="resume-actions d-flex justify-content-between align-items-center mt-3">
+                        <%= link_to "Voir le chat", chat_path(resume.chat), class: "btn btn-sm btn-outline-primary" %>
+
+                        <%= button_to "Supprimer", resume_path(resume),
+                              method: :delete,
+                              data: { confirm: "Supprimer cette séance ?" },
+                              class: "btn btn-sm btn-danger" %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+
+              <% if rest.present? %>
+                <button
+                  class="resume-toggle"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#<%= "#{uid}-collapse" %>"
+                  aria-expanded="false"
+                  aria-controls="<%= "#{uid}-collapse" %>">
+                  <span class="resume-toggle__label">Voir plus</span>
+                  <span class="resume-toggle__chev" aria-hidden="true">▾</span>
+                </button>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <div class="card-footer d-flex justify-content-between align-items-center">
-          <%= link_to "Voir le chat", chat_path(resume.chat), class: "btn btn-sm btn-outline-primary" %>
-          <%= button_to "Supprimer cette séance", resume_path(resume),
-                method: :delete,
-                data: { confirm: "Supprimer cette séance ?" },
-                class: "btn btn-sm btn-danger" %>
-        </div>
+        <% end %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

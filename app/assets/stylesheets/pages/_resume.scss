@@ -1,0 +1,135 @@
+.resume-page {
+  padding: 32px 100px 60px;
+  background: #faf7ff;
+}
+
+@media (max-width: 992px) {
+  .resume-page { padding: 22px 18px 40px; }
+}
+
+.resume-kicker {
+  margin: 0 0 6px;
+  font-weight: 700;
+  color: rgba(0,0,0,.55);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+
+.resume-title {
+  margin: 0 0 6px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #2f2f39;
+}
+
+.resume-subtitle {
+  margin: 0 0 18px;
+  color: rgba(0,0,0,.65);
+}
+
+.resume-empty {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  padding: 18px;
+}
+
+/* Wrapper: autorise le bouton à dépasser */
+.resume-card {
+  position: relative;
+  overflow: visible;          /* ✅ IMPORTANT: sinon bouton coupé */
+  padding-bottom: 16px;       /* place pour le bouton */
+}
+
+/* Surface: garde l'arrondi et coupe l'intérieur */
+.resume-card__surface {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  overflow: hidden;           /* ✅ on clippe le contenu, pas le bouton */
+}
+
+.resume-card__top {
+  padding: 16px 18px;
+}
+
+.resume-card__title {
+  font-weight: 800;
+  color: #2f2f39;
+}
+
+.resume-card__preview {
+  color: rgba(0,0,0,.68);
+  line-height: 1.6;
+  position: relative;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Fade uniquement quand fermé */
+.resume-card__fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+}
+
+.resume-card.is-open .resume-card__fade {
+  display: none;              /* ✅ fade disparaît quand ouvert */
+}
+
+.resume-card__body {
+  border-top: 1px solid rgba(0,0,0,.06);
+  padding: 16px 18px;
+}
+
+.resume-card__full {
+  color: rgba(0,0,0,.70);
+  line-height: 1.7;
+}
+
+/* Bouton "à cheval" */
+.resume-toggle {
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  transform: translateX(-50%);
+  z-index: 3;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 999px;
+  padding: 6px 16px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.10);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.resume-toggle:hover {
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.14);
+}
+
+.resume-toggle__chev {
+  display: inline-block;
+  transition: transform .18s ease;
+}
+
+.resume-card.is-open .resume-toggle__chev {
+  transform: rotate(180deg);
+}
