@@ -20,9 +20,9 @@ class ChatsController < ApplicationController
   end
 
   def destroy
-  @program = Program.find(params[:program_id])
-  @chat = @program.chats.find(params[:id])
-  @chat.destroy
-  redirect_to program_path(@program), status: :see_other
+    @program = Program.find(params[:program_id])
+    @chat = @program.chats.find(params[:id])
+    @chat.destroy
+    redirect_to program_path(@program), status: :see_other
   end
 end
