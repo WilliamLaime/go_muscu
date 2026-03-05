@@ -1,7 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 12px rgba(207, 182, 237, 0.15);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -33,4 +38,18 @@
     background: #444;
     color: white;
   }
+}
+
+.page-hero {
+  margin-top: -16px; // remonte de la hauteur du border-radius
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+
+body {
+  overflow-x: visible !important;
+}
+
+html {
+  overflow-x: visible !important;
 }
