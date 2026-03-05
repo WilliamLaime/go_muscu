@@ -1,7 +1,14 @@
-<ul class="position-sticky sticky-top nav flex-column">
-  <div class="list-group list-group-flush program-nav">
-    <% programs.each do |program| %>
-      <%= link_to program.workout, program_path(program), class: "list-group-item list-group-item-action" %>
+<div class="program-nav">
+  <% programs.each do |program| %>
+    <%= link_to program_path(program), class: "program-card" do %>
+      <% if program.image.attached? %>
+        <%= image_tag program.image, class: "program-card__img" %>
+      <% else %>
+        <div class="program-card__placeholder"></div>
+      <% end %>
+      <div class="program-card__overlay">
+        <span class="program-card__title"><%= program.workout %></span>
+      </div>
     <% end %>
-  </div>
-</ul>
+  <% end %>
+</div>

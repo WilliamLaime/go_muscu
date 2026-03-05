@@ -1,3 +1,9 @@
+<div class="program-banner" <% if @program.image.attached? %>style="background-image: url('<%= url_for(@program.image) %>');"<% end %>>
+  <div class="program-banner__overlay">
+    <h1 class="program-banner__title"><%= @program.workout %></h1>
+  </div>
+</div>
+
 <div class="program-page">
   <div class="container-fluid">
     <div class="row g-4" data-controller="toggle">
@@ -16,14 +22,14 @@
               <% end %>
             </div>
 
-            <%= render "shared/sidenav", programs: @programs %>
+            <%= render "shared/sidenav", programs: @programs.where.not(id: @program.id) %>
           </div>
         </aside>
 
         <%= link_to "#",
           class: "btn btn-sm btn-outline-secondary d-none",
           data: { action: "click->toggle#call", toggle_target: "show" } do %>
-          <i class="fa-regular fa-square-caret-right"></i> Menu
+          <i class="fa-regular fa-square-caret-right"></i>
         <% end %>
       </div>
 
@@ -31,9 +37,6 @@
       <section class="col-md-6" data-toggle-target="mainContent">
         <div class="panel">
           <div class="panel__body">
-            <p class="program-kicker">Programme</p>
-            <h1 class="program-title"><%= @program.workout %></h1>
-
             <% if @program.description.present? %>
               <%
                 lines    = @program.description.strip.split("\n").map(&:strip).reject(&:empty?)
@@ -47,10 +50,6 @@
                     sections << current
                   elsif current
                     current[:items] << line
-                  else
-                    # Texte introductif avant le premier emoji (ex: "Programme Legs")
-                    sections << { header: nil, items: [line] }
-                    current = sections.last
                   end
                 end
               %>
@@ -109,6 +108,7 @@
             <% end %>
           </div>
         </div>
+
       </aside>
 
     </div>
