@@ -21,6 +21,15 @@
 
           <div class="col-12 col-md-6">
             <div class="resume-card" data-resume-card>
+
+              <%= button_to resume_path(resume),
+                            method: :delete,
+                            data: { confirm: "Supprimer cette séance ?" },
+                            class: "resume-delete-btn" do %>
+                <!-- Icône poubelle -->
+                <i class="fa-solid fa-trash fa-l"></i>
+              <% end %>
+
               <div class="resume-card__surface">
                 <div class="resume-card__top">
                   <h5 class="resume-card__title mb-1">
@@ -29,6 +38,7 @@
 
                   <div class="resume-card__preview">
                     <%= simple_format(preview) %>
+
                     <% if rest.present? %>
                       <span class="resume-card__fade"></span>
                     <% end %>
@@ -43,12 +53,7 @@
                       </div>
 
                       <div class="resume-actions d-flex justify-content-between align-items-center mt-3">
-                        <%= link_to "Voir le chat", chat_path(resume.chat), class: "btn btn-sm btn-outline-primary" %>
-
-                        <%= button_to "Supprimer", resume_path(resume),
-                              method: :delete,
-                              data: { confirm: "Supprimer cette séance ?" },
-                              class: "btn btn-sm btn-danger" %>
+                        <%= link_to "Voir le chat", chat_path(resume.chat), class: "btn-muscu-chat" %>
                       </div>
                     </div>
                   </div>
@@ -67,6 +72,7 @@
                   <span class="resume-toggle__chev" aria-hidden="true">▾</span>
                 </button>
               <% end %>
+
             </div>
           </div>
         <% end %>
