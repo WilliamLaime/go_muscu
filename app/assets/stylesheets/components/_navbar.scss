@@ -34,3 +34,114 @@
     color: white;
   }
 }
+
+$orange: #ff00e6;
+$glow: rgba(225, 0, 255, 0.3);
+
+// Centre l'animation dans la navbar Bootstrap
+.navbar-animation {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+// Haltère
+.navbar-lewagon .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;  // ← ajuste cet espace selon ton goût
+}
+
+.dumbbell-wrap {
+  animation: lift 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes lift {
+  0%   { transform: translateY(0px); }
+  40%  { transform: translateY(-4px); }
+  60%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.dumbbell {
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0 0 5px $glow);
+}
+
+.plate {
+  background: linear-gradient(135deg, #ccc, #999, #bbb);
+  border-radius: 3px;
+  border: 1px solid #bbb;
+  animation: plate-glow 2s ease-in-out infinite;
+
+  &.p-outer { width: 7px;  height: 22px; }
+  &.p-inner { width: 5px;  height: 16px; }
+}
+
+@keyframes plate-glow {
+  0%   { border-color: #bbb; box-shadow: none; }
+  40%  { border-color: $orange; box-shadow: 0 0 6px $glow; }
+  100% { border-color: #bbb; box-shadow: none; }
+}
+
+.collar {
+  width: 5px; height: 14px;
+  background: linear-gradient(to bottom, #aaa, #666, #999);
+  border: 1px solid #aaa;
+  border-radius: 1px;
+}
+
+.bar {
+  width: 36px; height: 6px;
+  background: linear-gradient(to bottom, #bbb, #777, #aaa);
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #888;
+}
+
+// Tagline
+.tagline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag-word {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #ccc;
+  animation: word-light 2s ease-in-out infinite;
+
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(3) { animation-delay: 0.2s; }
+  &:nth-child(5) { animation-delay: 0.4s; }
+}
+
+@keyframes word-light {
+  0%   { color: #ccc; }
+  40%  { color: $orange; }
+  70%  { color: #999; }
+  100% { color: #ccc; }
+}
+
+.tag-dot {
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: #ddd;
+  flex-shrink: 0;
+  animation: dot-pulse 2s ease-in-out infinite;
+
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(4) { animation-delay: 0.3s; }
+}
+
+@keyframes dot-pulse {
+  0%   { background: #ddd; }
+  40%  { background: $orange; box-shadow: 0 0 4px $glow; }
+  100% { background: #ddd; }
+}

@@ -2,7 +2,22 @@
   <div class="container-fluid container">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo_noir_gomuscu_big.png", alt: "GoMuscu" %>
-    <% end %>
+
+  <%# CENTRE : animation %>
+    <div class="navbar-animation d-none d-sm-flex">
+      <div class="dumbbell-wrap">
+        <div class="dumbbell">
+          <div class="plate p-outer"></div>
+          <div class="plate p-inner"></div>
+          <div class="collar"></div>
+          <div class="bar"></div>
+          <div class="collar"></div>
+          <div class="plate p-inner"></div>
+          <div class="plate p-outer"></div>
+        </div>
+      </div>
+    </div>
+<% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

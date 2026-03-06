@@ -39,17 +39,14 @@ program_data.each do |data|
   program = Program.find_or_create_by!(workout: data[:workout])
   program.update!(description: data[:description])
 
-  unless program.image.attached?
-    path = images_path.join(data[:image])
-    program.image.attach(
-      io: File.open(path),
-      filename: data[:image],
-      content_type: "image/jpeg"
-    )
-    puts "  Image attachee: #{data[:workout]} -> #{data[:image]}"
-  else
-    puts "  Image deja presente: #{data[:workout]}"
-  end
+  program.image.purge if program.image.attached?
+  path = images_path.join(data[:image])
+  program.image.attach(
+    io: File.open(path),
+    filename: data[:image],
+    content_type: "image/jpeg"
+  )
+  puts "  Image attachee: #{data[:workout]} -> #{data[:image]}"
 end
 
 puts "Done! #{Program.count} programs."
