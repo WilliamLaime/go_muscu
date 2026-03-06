@@ -1,5 +1,7 @@
 puts "Seeding programs..."
 
+
+Program.destroy_all
 images_path = Rails.root.join("app/assets/images")
 
 program_data = [
