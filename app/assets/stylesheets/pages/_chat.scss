@@ -33,6 +33,55 @@
   min-height: 200px;
 }
 
+// Chat vide
+
+.chat-empty {
+  text-align: center;
+  padding: 40px 20px;
+
+  &__icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    font-weight: 800;
+    color: #2f2f39;
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: rgba(0,0,0,.5);
+    margin-bottom: 24px;
+  }
+}
+
+.chat-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.chat-suggestion {
+  background: white;
+  border: 1.5px solid rgba(124, 58, 237, 0.2);
+  border-radius: 24px;
+  padding: 12px 20px;
+  text-align: left;
+  color: #2f2f39;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #7c3aed;
+    background: rgba(124, 58, 237, 0.05);
+    transform: translateX(4px);
+  }
+}
+
 // Bulles de messages
 .message-user .bubble {
   background: #573e82;
@@ -133,11 +182,29 @@
   border: none;
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
   cursor: pointer;
-  transition: all 0.2s;
   z-index: 999;
 
   &:hover {
     background: #5b21b6;
     transform: translateY(-2px);
+  }
+}
+
+// Bouton de l'alerte
+.alert-dismissible {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  min-width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  padding-right: 48px;
+
+  .btn-close {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
   }
 }

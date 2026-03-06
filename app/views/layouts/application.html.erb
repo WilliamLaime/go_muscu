@@ -34,5 +34,50 @@
     </main>
 
     <%= render "shared/footer" %>
+
+
+    <script>
+      // <!-- Suggestion dans chat vide -->
+      function fillInput(text) {
+      const input = document.querySelector("#message_content");
+      const form = input?.closest("form");
+        if (input && form) {
+          input.value = text;
+          form.requestSubmit();
+  }
+}
+
+     // <!-- Alerte qui disparait -->
+    document.addEventListener("turbo:load", function() {
+      setTimeout(function() {
+        document.querySelectorAll(".alert").forEach(function(alert) {
+          alert.classList.remove("show");
+          setTimeout(() => alert.remove(), 300);
+        });
+      }, 3000);
+    });
+
+    // <!-- Bouton to the top qui reste au dessus footer -->
+    document.addEventListener("turbo:load", function() {
+      const btn = document.querySelector(".scroll-top-btn");
+      if (!btn) return;
+
+      const footer = document.querySelector("footer");
+      if (!footer) return;
+
+      window.addEventListener("scroll", function() {
+        const footerTop = footer.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (footerTop < windowHeight) {
+          // Le footer est visible, on remonte le bouton
+          btn.style.bottom = (windowHeight - footerTop + 16) + "px";
+        } else {
+          // Position normale
+          btn.style.bottom = "32px";
+        }
+      });
+});
+    </script>
   </body>
 </html>

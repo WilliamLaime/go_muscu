@@ -1,21 +1,44 @@
-<% messages.each do |message| %>
-  <% if message.role == "user" %>
-    <div class="d-flex justify-content-end mb-2 message-user">
-      <div class="bubble">
-        <%= raw(render_markdown(message.content)) %>
-      </div>
+<!-- Suggestion si chat vide -->
+<% if messages.empty? %>
+  <div class="chat-empty">
+    <div class="chat-empty__icon">🏋️</div>
+    <h2 class="chat-empty__title">Bonjour, je suis ton Coach IA</h2>
+    <p class="chat-empty__subtitle">Pose-moi une question ou choisis une suggestion</p>
+
+    <div class="chat-suggestions">
+      <button class="chat-suggestion" onclick="fillInput('Par où commencer en tant que débutant ?')">
+        💪 Par où commencer en tant que débutant ?
+      </button>
+      <button class="chat-suggestion" onclick="fillInput('Crée-moi une séance adaptée à mon niveau')">
+        📋 Crée-moi une séance adaptée à mon niveau
+      </button>
+      <button class="chat-suggestion" onclick="fillInput('Quels exercices pour progresser rapidement ?')">
+        🚀 Quels exercices pour progresser rapidement ?
+      </button>
     </div>
-  <% elsif message.role == "assistant" %>
-    <div class="d-flex justify-content-start mb-3 message-assistant">
-      <div class="bubble">
-        <%= raw(render_markdown(message.content)) %>
-        <% if message == @chat.messages.last %>
-          <%= button_to "Sauvegarder la seance", chat_resumes_path(@chat),
-                method: :post,
-                form: { data: { turbo: false } },
-                class: "button-muscu-chat-secondaire mt-3" %>
-        <% end %>
+  </div>
+
+<!-- Echange avec LLM -->
+<% else %>
+  <% messages.each do |message| %>
+    <% if message.role == "user" %>
+      <div class="d-flex justify-content-end mb-2 message-user">
+        <div class="bubble">
+          <%= raw(render_markdown(message.content)) %>
+        </div>
       </div>
-    </div>
+    <% elsif message.role == "assistant" %>
+      <div class="d-flex justify-content-start mb-3 message-assistant">
+        <div class="bubble">
+          <%= raw(render_markdown(message.content)) %>
+          <% if message == @chat.messages.last %>
+            <%= button_to "Sauvegarder la seance", chat_resumes_path(@chat),
+                  method: :post,
+                  form: { data: { turbo: false } },
+                  class: "button-muscu-chat-secondaire mt-3" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
