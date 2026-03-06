@@ -51,3 +51,5 @@ program_data.each do |data|
     puts "  Image deja presente: #{data[:workout]}"
   end
 end
+
+puts "Done! #{Program.count} programs."
