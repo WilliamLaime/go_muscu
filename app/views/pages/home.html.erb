@@ -48,7 +48,7 @@
 
 
           <div class="program-card__img-wrap">
-            <%= image_tag program.image, alt: program.workout %>
+            <%= cl_image_tag program.image.key, alt: program.workout %>
           </div>
 
           <div class="program-card__body">
