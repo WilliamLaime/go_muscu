@@ -32,7 +32,7 @@
 <div class="programs">
   <div class="container">
 
-    <% program_images = ["leg.jpg", "full_body.jpg", "photo_test.jpg", "push.jpg", "lower.jpg", "pull.jpg"] %>
+    <% program_images = ["lower.jpg", "full_body.jpg", "leg.jpg", "push.jpg", "pull.jpg", "full_body.jpg"] %>
     <% program_descs  = [
       "Séance dédiée au bas du corps : quadriceps, ischios, fessiers et mollets.",
       "Entraînement des muscles de poussée : pectoraux, épaules et triceps.",
@@ -46,8 +46,9 @@
       <% @programs.each_with_index do |program, i| %>
         <%= link_to program_path(program), class: "program-card" do %>
 
+
           <div class="program-card__img-wrap">
-            <%= image_tag program_images[i % program_images.length], alt: program.workout %>
+            <%= image_tag program.image, alt: program.workout %>
           </div>
 
           <div class="program-card__body">
