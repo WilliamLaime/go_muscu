@@ -27,14 +27,14 @@
       <ul class="navbar-nav ms-auto align-items-center gap-1">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link" %>
+            <%= link_to "Dashboard", resumes_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to current_user.name, "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user"></i>
+              <%= image_tag "avatar.jpg", style: "width: 38px; height: 38px; border-radius: 50%; object-fit: cover;" %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
