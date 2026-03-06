@@ -1,6 +1,9 @@
 .resume-page {
   padding: 32px 100px 60px;
   background: #faf7ff;
+
+  /* On force la section à prendre toute la hauteur de l'écran */
+  min-height: 100vh;
 }
 
 @media (max-width: 992px) {
@@ -86,7 +89,7 @@
 }
 
 .resume-card__body {
-  border-top: 1px solid rgba(0,0,0,.06);
+  border-top: none;
   padding: 16px 18px;
 }
 
@@ -108,7 +111,11 @@
   gap: 8px;
 
   background: #fff;
-  border: 1px solid rgba(0,0,0,.15);
+
+  /* couleur violette */
+  border: 1px solid #a173d9;
+  color: #a173d9;
+
   border-radius: 999px;
   padding: 6px 16px;
 
@@ -117,7 +124,7 @@
   line-height: 1;
 
   box-shadow: 0 8px 20px rgba(0,0,0,.10);
-  transition: transform .18s ease, box-shadow .18s ease;
+  transition: transform .18s ease, box-shadow .18s ease, background .2s ease;
 }
 
 .resume-toggle:hover {
@@ -132,4 +139,35 @@
 
 .resume-card.is-open .resume-toggle__chev {
   transform: rotate(180deg);
+}
+
+/* Bouton poubelle en haut à droite de la card */
+.resume-delete-btn {
+  position: absolute; /* place le bouton dans la card */
+  top: 12px; /* distance depuis le haut */
+  right: 12px; /* distance depuis la droite */
+  z-index: 5; /* passe au-dessus du contenu */
+
+  background: transparent; /* pas de fond */
+  border: none; /* enlève la bordure du bouton */
+  padding: 0; /* enlève l'espace interne par défaut */
+  margin: 0;
+
+  color: #9aa0a6; /* gris */
+  font-size: 16px; /* taille de l'icône */
+  line-height: 1;
+  cursor: pointer;
+
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.resume-delete-btn:hover {
+  color: #dc3545; /* rouge au survol */
+  transform: scale(1.1); /* petit zoom */
+}
+
+/* On laisse un peu de place en haut pour la poubelle */
+.resume-card__top {
+  padding: 16px 18px;
+  padding-right: 44px; /* évite que le titre passe sous l'icône */
 }
